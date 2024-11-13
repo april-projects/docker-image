@@ -1,4 +1,4 @@
-FROM openjdk:21-alpine AS java21
+FROM openjdk:21-slim AS java21
 
 # 设置时区
 ENV TZ Asia/Shanghai

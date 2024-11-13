@@ -1,4 +1,4 @@
-FROM openjdk:17-alpine AS java17
+FROM openjdk:17-slim AS java17
 
 # 设置时区
 ENV TZ Asia/Shanghai

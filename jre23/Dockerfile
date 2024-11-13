@@ -1,4 +1,4 @@
-FROM openjdk:23-alpine AS java23
+FROM openjdk:23-slim AS java23
 
 # 设置时区
 ENV TZ Asia/Shanghai
