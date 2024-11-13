@@ -1,4 +1,4 @@
-FROM openjdk:11-slim AS java11
+FROM openjdk:11-jdk-slim AS java11
 
 # 设置时区
 ENV TZ Asia/Shanghai
