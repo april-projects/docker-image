@@ -9,5 +9,5 @@ RUN apk add --no-cache tzdata \
 
 # 删除不必要的文件以减小镜像体积
 RUN rm -rf /var/cache/apk/* /usr/lib/lib*.a /usr/share/man \
-    && find /usr/lib/jvm -name "*.zip" -exec rm -f {} \; \
-    && find /usr/lib/jvm -name "src.zip" -exec rm -f {} \;
+    && find /opt/java/openjdk -name "*.zip" -exec rm -f {} \; \
+    && find /opt/java/openjdk -name "src.zip" -exec rm -f {} \;
