@@ -1,12 +1,13 @@
-FROM swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/bellsoft/liberica-openjre-alpine-musl:21 AS java21
+# 基于 Eclipse Temurin 提供的 JRE 21 Alpine 基础镜像
+FROM eclipse-temurin:21-jre-alpine
 
-# 设置时区
-ENV TZ Asia/Shanghai
+# 设置时区为 Asia/Shanghai
+RUN apk add --no-cache tzdata \
+    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone \
+    && apk del tzdata
 
-# 修改APK源为阿里云，安装必要的工具并设置时区
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
-    apk update && \
-    apk add ttf-dejavu alpine-conf && \
-    /sbin/setup-timezone -z Asia/Shanghai && \
-    apk del alpine-conf && \
-    rm -rf /var/cache/apk/*
+# 删除不必要的文件以减小镜像体积
+RUN rm -rf /var/cache/apk/* /usr/lib/lib*.a /usr/share/man \
+    && find /opt/java/openjdk -name "*.zip" -exec rm -f {} \; \
+    && find /opt/java/openjdk -name "src.zip" -exec rm -f {} \;
