@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-slim AS java11
+FROM swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/bellsoft/liberica-openjre-alpine-musl:11 AS java11
 
 # 设置时区
 ENV TZ Asia/Shanghai
