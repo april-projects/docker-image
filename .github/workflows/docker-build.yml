@@ -8,6 +8,7 @@ on:
       - 'v17.*'
       - 'v21.*'
       - 'v23.*'
+      - 'va.*'
 
 jobs:
   build:
@@ -55,6 +56,9 @@ jobs:
           elif [[ "$TAG" == v23* ]]; then
             IMAGE_TAG="jre23"
             DOCKERFILE="jre23/Dockerfile"
+          elif [[ "$TAG" == va.* ]]; then
+            IMAGE_TAG="arthas"
+            DOCKERFILE="arthas/Dockerfile"
           else
             # 如果标签不符合预期，输出错误并退出
             echo "不支持的标签版本: $TAG"
